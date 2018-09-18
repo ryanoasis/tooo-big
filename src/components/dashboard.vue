@@ -413,26 +413,12 @@ export default {
     Promise.all([
       axios.get('/static/data/data-0.json'),
       axios.get('/static/data/data-1.json'),
-      axios.get('/static/data/data-2.json'),
-      axios.get('/static/data/data-3.json'),
-      axios.get('/static/data/data-4.json'),
-      axios.get('/static/data/data-5.json'),
-      axios.get('/static/data/data-6.json'),
-      axios.get('/static/data/data-7.json'),
-      axios.get('/static/data/data-8.json'),
-      axios.get('/static/data/data-9.json')
-    ]).then(([response0, response1, response2, response3, response4, response5, response6, response7, response8, response9]) => {
+      axios.get('/static/data/data-2.json')
+    ]).then(([response0, response1, response2]) => {
       let combined = [
         ...response0.data,
         ...response1.data,
-        ...response2.data,
-        ...response3.data,
-        ...response4.data,
-        ...response5.data,
-        ...response6.data,
-        ...response7.data,
-        ...response8.data,
-        ...response9.data
+        ...response2.data
       ]
 
       this.showLoading = false
