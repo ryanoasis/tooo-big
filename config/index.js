@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {},
 
     // Various Dev Server settings
-    host: 'https://tooobig.herokuapp.com', // process.env.HOST, // can be overwritten by process.env.HOST
+    host: 'tooobig.herokuapp.com', // process.env.HOST, // can be overwritten by process.env.HOST
     port: process.env.PORT, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
