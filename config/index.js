@@ -13,9 +13,10 @@ module.exports = {
     proxyTable: {},
 
     // Various Dev Server settings
-    host: process.env.HOST || '0.0.0.0', // can be overwritten by process.env.HOST
-    port: process.env.PORT || 3000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    // host: process.env.HOST || '0.0.0.0', // can be overwritten by process.env.HOST
+    // port: process.env.PORT || 3000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8080,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
