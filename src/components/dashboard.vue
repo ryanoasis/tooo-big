@@ -1,19 +1,5 @@
 <template>
   <div class="page-container">
-    <!-- <md-dialog :md-active.sync="showDialog1">
-      <md-dialog-title>Preferences</md-dialog-title>
-      <ag-grid-vue style="width: 100%; height: 300px;"
-        class="ag-theme-material md-scrollbar"
-        :columnDefs="columnDefsBucket"
-        :rowData="rowData | byName(key)"
-        :enableSorting="true"
-        :enableFilter="true">
-      </ag-grid-vue>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog1 = false" :md-ripple="false">Close</md-button>
-        <md-button class="md-primary" @click="showDialog1 = false" :md-ripple="false">Save</md-button>
-      </md-dialog-actions>
-    </md-dialog> -->
     <md-app>
       <md-app-toolbar class="md-primary">
         <span class="md-title">{{ title }}</span>
@@ -21,17 +7,6 @@
       <md-app-content>
         <md-progress-spinner :md-diameter="100" :md-stroke="10" md-mode="indeterminate" v-show="showLoading"></md-progress-spinner>
           <div v-bind:class="{ loading: showLoading }">
-            <!-- Quantity of food purchased after expiration: {{ foodPurchasedAfterExpiration }} -->
-            <!-- Filter by Type:
-            <select v-model="filterByType" v-on:click="filterBy('type', filterByType, rowData)">
-              <option disabled value="">Select</option>
-              <option v-for="(item, key) in foodTypes" :key="key">
-                {{ key }}
-              </option>
-            </select> -->
-
-    <md-button class="md-primary" @click="showDialog1 = true" :md-ripple="false">Show Dialog</md-button>
-
             <div class="md-layout md-alignment-center">
               <div class="md-layout-item md-size-100">
                 <md-card>
@@ -50,7 +25,6 @@
                 </md-card>
               </div>
               <!-- Buckets -->
-              showDialog is {{ showDialog }} <br/>
               <div v-for="(item, key) in foodNames" :key="key" class="card-expansion md-layout-item md-size-25 md-medium-size-33 md-small-size-50 md-xsmall-size-100">
                 <md-card>
                   <md-card-header>
@@ -117,68 +91,6 @@
                 </md-dialog>
               </div>
             </div>
-            <!-- <div class="card-expansion">
-              <md-card>
-                <md-card-media>
-                  <img src="/assets/examples/card-image-1.jpg" alt="People">
-                </md-card-media>
-
-                <md-card-header>
-                  <div class="md-title">Title goes here</div>
-                  <div class="md-subhead">Subtitle here</div>
-                </md-card-header>
-
-                <md-card-expand>
-                  <md-card-actions md-alignment="space-between">
-                    <div>
-                      <md-button>Action</md-button>
-                      <md-button>Action</md-button>
-                    </div>
-
-                    <md-card-expand-trigger>
-                      <md-button class="md-icon-button">
-                        <md-icon>keyboard_arrow_down</md-icon>
-                      </md-button>
-                    </md-card-expand-trigger>
-                  </md-card-actions>
-
-                  <md-card-expand-content>
-                    <md-card-content>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-                    </md-card-content>
-                  </md-card-expand-content>
-                </md-card-expand>
-              </md-card>
-
-              <md-card>
-                <md-card-media>
-                  <img src="/assets/examples/card-image-1.jpg" alt="People">
-                </md-card-media>
-
-                <md-card-header>
-                  <div class="md-title">Title goes here</div>
-                  <div class="md-subhead">Subtitle here</div>
-                </md-card-header>
-
-                <md-card-expand>
-                  <md-card-actions md-alignment="space-between">
-                    <div>
-                      <md-button>Action</md-button>
-                    </div>
-
-                    <md-card-expand-trigger>
-                      <md-button>Learn more</md-button>
-                    </md-card-expand-trigger>
-                  </md-card-actions>
-
-                  <md-card-expand-content>
-                    <md-card-content>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-                    </md-card-content>
-                  </md-card-expand-content>
-                </md-card-expand>
-              </md-card>
-            </div> -->
             <md-card md-with-hover>
               <md-card-header>
                 <div class="md-title">Complete food Items List</div>
@@ -257,14 +169,8 @@ export default {
       columnDefsBucket: null,
       columnDefsBucketMini: null,
       rowData: null,
-      // isExternalFilterPresent: isExternalFilterPresent,
-      // doesExternalFilterPass: doesExternalFilterPass,
       title: 'Tooo Big',
-      showDialog1: false,
       showDialog: {},
-      dialog: {
-        htmlContent: '<b>testing </b>'
-      },
       showLoading: true,
       foodPurchasedAfterExpiration: {
         total: 0
@@ -286,11 +192,9 @@ export default {
     },
     filterBy: function (type, value, data) {
       console.log('filter by ' + type + ' ' + value)
-      // data = data.filter((item) => { return item[type] === value })
       this.gridApi.onFilterChanged(event)
     },
     doesExternalFilterPass: function (node) {
-      // console.log('doesExternalFilterPass', 'filter by', this.filterByName)
       let pass = (node.data.store === this.filterByStore || this.filterByStore === '') &&
         (node.data.type === this.filterByType || this.filterByType === '') &&
         (node.data.name === this.filterByName || this.filterByName === '')
@@ -301,7 +205,6 @@ export default {
       console.log('isExternalFilterPresent')
       console.log(this, this.data, this.filterByType, this.filterByName, this.filterByStore)
       return this.filterByType !== '' || this.filterByName !== '' || this.filterByStore !== ''
-      // return true
     }
   },
   filters: {
@@ -325,21 +228,6 @@ export default {
       this.filterBy('store', val)
     }
   },
-  /*
-  computed: {
-    filterByStore: {
-      get () {
-        return ''
-      },
-      set (optionValue) {
-        console.log('set value computed', optionValue)
-        // onchange not working for us, so do it this way:
-        // this.filterByStore = optionValue
-        this.filterBy('type', optionValue)
-      }
-    }
-  },
-  */
   components: {
     AgGridVue
   },
@@ -413,12 +301,26 @@ export default {
     Promise.all([
       axios.get('/static/data/data-0.json'),
       axios.get('/static/data/data-1.json'),
-      axios.get('/static/data/data-2.json')
-    ]).then(([response0, response1, response2]) => {
+      axios.get('/static/data/data-2.json'),
+      axios.get('/static/data/data-3.json'),
+      axios.get('/static/data/data-4.json'),
+      axios.get('/static/data/data-5.json'),
+      axios.get('/static/data/data-6.json'),
+      axios.get('/static/data/data-7.json'),
+      axios.get('/static/data/data-8.json'),
+      axios.get('/static/data/data-9.json')
+    ]).then(([response0, response1, response2, response3, response4, response5, response6, response7, response8, response9]) => {
       let combined = [
         ...response0.data,
         ...response1.data,
-        ...response2.data
+        ...response2.data,
+        ...response3.data,
+        ...response4.data,
+        ...response5.data,
+        ...response6.data,
+        ...response7.data,
+        ...response8.data,
+        ...response9.data
       ]
 
       this.showLoading = false
