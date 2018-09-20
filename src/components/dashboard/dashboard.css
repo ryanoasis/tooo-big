@@ -1,0 +1,32 @@
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.md-card {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.md-dialog {
+  width: 768px;
+}
+.md-progress-spinner {
+  position: relative;
+  z-index: 9;
+  top: 300px;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+.loading {
+  opacity: .5;
+  filter: blur(3px);
+}
