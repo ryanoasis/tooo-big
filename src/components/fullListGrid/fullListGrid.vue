@@ -3,19 +3,19 @@
     <v-card-title>
       <v-select
         label="Filter by Name"
-        :items="Object.keys(foodNames).sort()"
+        :items="['', ...Object.keys(foodNames).sort()]"
         v-model="filterByName"
       ></v-select>
       <v-spacer></v-spacer>
       <v-select
         label="Filter by Store"
-        :items="Object.keys(foodStores).sort()"
+        :items="['', ...Object.keys(foodStores).sort()]"
         v-model="filterByStore"
       ></v-select>
       <v-spacer></v-spacer>
       <v-select
         label="Filter by Type"
-        :items="Object.keys(foodTypes).sort()"
+        :items="['', ...Object.keys(foodTypes).sort()]"
         v-model="filterByType"
       ></v-select>
       <!--
@@ -48,6 +48,7 @@
       :items="items"
       :pagination.sync="pagination"
       :custom-filter="customFilter"
+      :custom-sort="customSort"
       :total-items="totalItems"
       :loading="isLoading"
       :rows-per-page-items="rowsPerPageItems"
@@ -61,7 +62,7 @@
         <td class="text-xs-left">{{ moment(props.item.purchaseDate).format(dateFormat) }}</td>
         <td class="text-xs-left">{{ moment(props.item.expirationDate).format(dateFormat) }}</td>
         <td class="text-xs-center">
-          <v-chip color="error" text-color="white" v-if="props.item.expirationDate > props.item.purchaseDate">
+          <v-chip color="error" text-color="white" v-if="props.item.expirationDate < props.item.purchaseDate">
             <v-avatar>
               <v-icon>warning</v-icon>
             </v-avatar>

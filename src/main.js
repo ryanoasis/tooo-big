@@ -5,6 +5,7 @@ import App from './app'
 import router from './router'
 import VueMaterial from 'vue-material'
 import Vuetify from 'vuetify'
+import VueApexCharts from 'vue-apexcharts'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import '../node_modules/ag-grid-community/dist/styles/ag-grid.css'
@@ -13,6 +14,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(VueMaterial)
 Vue.use(Vuetify)
+Vue.use(VueApexCharts)
 
 Vue.config.productionTip = false
 

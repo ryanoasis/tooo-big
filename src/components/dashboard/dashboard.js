@@ -1,9 +1,10 @@
 
 import {AgGridVue} from 'ag-grid-vue'
 import moment from 'moment'
-// import axios from 'axios'
+import lodash from 'lodash'
 import fullListGrid from '../fullListGrid/fullListGrid.vue'
-// import api from '../../services/api.js'
+import bucketChart from '../bucketChart/bucketChart.vue'
+import expirationHeatMapChart from '../expirationHeatMapChart/expirationHeatMapChart.vue'
 
 export default {
   name: 'Dashboard',
@@ -31,6 +32,21 @@ export default {
     }
   },
   methods: {
+    mapValues (value, fn) {
+      return lodash.mapValues(value, fn)
+    },
+    onFoodStoresUpdated (value) {
+      console.log('dashboard :: onFoodStoresUpdated', value)
+      this.foodStores = value
+    },
+    onFoodTypesUpdated (value) {
+      console.log('dashboard :: onFoodTypesUpdated', value)
+      this.foodTypes = value
+    },
+    onFoodNamesUpdated (value) {
+      console.log('dashboard :: onFoodNamesUpdated', value)
+      this.foodNames = value
+    },
     onGridReady (params) {
       this.gridApi = params.api
       this.columnApi = params.columnApi
@@ -79,7 +95,10 @@ export default {
   },
   components: {
     AgGridVue,
-    fullListGrid
+    fullListGrid,
+    bucketChart,
+    expirationHeatMapChart,
+    lodash
   },
   beforeMount () {
     this.columnDefs = [
